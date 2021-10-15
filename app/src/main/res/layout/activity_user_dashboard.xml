@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.901" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/welconeText"
         android:layout_width="283dp"
         android:layout_height="46dp"
         android:layout_marginTop="40dp"
@@ -50,7 +50,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/welconeText"
         app:layout_constraintVertical_bias="0.957" />
 
     <Button

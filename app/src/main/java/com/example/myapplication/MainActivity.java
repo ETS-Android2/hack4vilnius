@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -20,9 +21,8 @@ public class MainActivity extends AppCompatActivity {
         EditText userName = findViewById(R.id.editTextUsername);
         EditText password = findViewById(R.id.editTextPassword);
 
-        TextView loginInfo = findViewById(R.id.textLoginInfo);
-        loginInfo.setText(userName.getText() + " " + password.getText());
-
-        startActivity(new Intent(MainActivity.this, UserDashboardActivity.class));
+        Intent intent = new Intent(MainActivity.this, UserDashboardActivity.class);
+        intent.putExtra("username", userName.getText().toString());
+        startActivity(intent);
     }
 }
