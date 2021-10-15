@@ -14,15 +14,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
 
     public void onSignIn(View view) {
         EditText userName = findViewById(R.id.editTextUsername);
         EditText password = findViewById(R.id.editTextPassword);
 
-        TextView loginInfo = findViewById(R.id.textLoginInfo);
-        loginInfo.setText(userName.getText() + " " + password.getText());
-
         startActivity(new Intent(MainActivity.this, UserDashboardActivity.class));
     }
+
+    public void onRegisterClick(View view) {
+        startActivity(new Intent(MainActivity.this, RegisterActivity.class));
+    }
+
+
 }

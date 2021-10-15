@@ -20,9 +20,6 @@ public class UserDashboardActivity extends AppCompatActivity {
         EditText userName = findViewById(R.id.editTextUsername);
         EditText password = findViewById(R.id.editTextPassword);
 
-        TextView loginInfo = findViewById(R.id.textLoginInfo);
-        loginInfo.setText(userName.getText() + " " + password.getText());
-
         startActivity(new Intent(UserDashboardActivity.this, MapActivity.class));
     }
 }
