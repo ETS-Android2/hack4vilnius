@@ -14,6 +14,9 @@ public class UserDashboardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_dashboard);
+        String username = getIntent().getStringExtra("username");
+        TextView loginInfo = findViewById(R.id.welconeText);
+        loginInfo.setText("Sveiki " + username + "!");
     }
 
     public void goToMap(View view) {
