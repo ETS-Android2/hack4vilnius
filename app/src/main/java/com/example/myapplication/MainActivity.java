@@ -21,9 +21,6 @@ public class MainActivity extends AppCompatActivity {
         EditText userName = findViewById(R.id.editTextUsername);
         EditText password = findViewById(R.id.editTextPassword);
 
-        TextView loginInfo = findViewById(R.id.textLoginInfo);
-        loginInfo.setText(userName.getText() + " " + password.getText());
-
         Intent intent = new Intent(MainActivity.this, UserDashboardActivity.class);
         intent.putExtra("username", userName.getText().toString());
         startActivity(intent);
