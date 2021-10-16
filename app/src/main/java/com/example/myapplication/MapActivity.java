@@ -658,8 +658,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     public void onHomeButtonClick(View view) {
         Intent intent = new Intent(MapActivity.this, UserDashboardActivity.class);
-        TextView userName = findViewById(R.id.welcomeText);
-        intent.putExtra("username", userName.getText().toString());
+        intent.putExtra("username", username);
         startActivity(intent);
     }
 }

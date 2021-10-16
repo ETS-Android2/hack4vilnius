@@ -55,8 +55,6 @@ public class UserDashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_dashboard);
 
         username = getIntent().getStringExtra("username");
-        TextView loginInfo = findViewById(R.id.welcomeText);
-        loginInfo.setText("Sveiki " + username + "!");
     }
 
     public void goToMap(View view) {
@@ -157,8 +155,7 @@ public class UserDashboardActivity extends AppCompatActivity {
 
     public void onHomeButtonClick(View view) {
         Intent intent = new Intent(UserDashboardActivity.this, UserDashboardActivity.class);
-        TextView userName = findViewById(R.id.welcomeText);
-        intent.putExtra("username", userName.getText().toString());
+        intent.putExtra("username", username);
         startActivity(intent);
     }
 
@@ -170,15 +167,13 @@ public class UserDashboardActivity extends AppCompatActivity {
 //    }
     public void onMapButtonClick(View view) {
         Intent intent = new Intent(UserDashboardActivity.this, MapActivity.class);
-        TextView userName = findViewById(R.id.welcomeText);
-        intent.putExtra("username", userName.getText().toString());
+        intent.putExtra("username", username);
         startActivity(intent);
     }
 
     public void onRatingButtonClick(View view) {
         Intent intent = new Intent(UserDashboardActivity.this, ScoreboardActivity.class);
-        TextView userName = findViewById(R.id.welcomeText);
-        intent.putExtra("username", userName.getText().toString());
+        intent.putExtra("username", username);
         startActivity(intent);
     }
 }
