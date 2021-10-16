@@ -3,7 +3,7 @@ from .models import HeapUser, PointsList, HeapOrganisation
 
 
 class HeapUserSerializer(serializers.ModelSerializer):
-    user_email = serializers.CharField(max_length=255)
+    user_email = serializers.CharField(max_length=255, unique=True)
     user_password = serializers.CharField(max_length=255)
     user_ID = serializers.IntegerField(required=False)
     user_points = serializers.IntegerField(required=False)
@@ -42,3 +42,9 @@ class HeapUserSafeSerializer(serializers.ModelSerializer):
         model = HeapUser
         fields = ['user_email', 'user_ID', 'user_points']
     
+
+class LocationsSerializer(serializers.ModelSerializer):
+    name = serializers.CharField(max_length=64, required=True)
+    latitude = serializers.FloatField(required=True)
+    longtitude = serializers.FloatField(required=True)
+    location_address = serializers.CharField(max_length=255, required=True)
