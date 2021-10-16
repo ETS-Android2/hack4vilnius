@@ -1,5 +1,5 @@
 from django.http.response import HttpResponse
-from .models import HeapUser, Locations, PointsAdditions
+from .models import HeapOrganisation, HeapUser, Locations, PointsAdditions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
@@ -29,6 +29,12 @@ class HeapOrganisationViews(APIView):
         else:
             return Response({"status": "error", "errors": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
+class HeapOrganisationsView(APIView):
+    def get(self, request):
+        items = HeapOrganisation.objects.all()
+        serializer = HeapOrganisationSerializer(items, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 
 class GetUserInfo(APIView):
     def get(self, request, id=None):
@@ -46,10 +52,10 @@ class GetUserInfo(APIView):
 
         
 class GetUsersInfo(APIView):
-    def get(self, request, id=None):
+    def get(self, request):
         items = HeapUser.objects.all()
         serializer = HeapUserSafeSerializer(items, many=True)
-        return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class LoginView(APIView):
@@ -91,3 +97,18 @@ class PointsAdditionsView(APIView):
             serializer = PointsAdditionsSerializer(points_list, many=True)
 
         return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
+
+    # def post(self, request):
+    #     serializer = PointsAdditionsSerializer(data=request.data)
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #         recipient = serializer.data['recipient']
+    #         points = serializer.data['points']
+    #         user = HeapUser.objects.get(user_ID=recipient)
+    #         currentPoints = user.user_points
+    #         user.user_points = currentPoints + points
+    #         user.save()
+    #         ss = PointsAdditionsSerializer(user)
+    #         return Response({"status": "success", "data": ss.data}, status=status.HTTP_200_OK)
+    #     else:
+    #         return Response({"status": "error", "errors": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)

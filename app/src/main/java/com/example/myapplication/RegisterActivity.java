@@ -55,9 +55,10 @@ public class RegisterActivity extends AppCompatActivity {
 
         validateFormFields(email.getText().toString(), password.getText().toString(), confirmedPassword.getText().toString());
 
-        TextView registerFormInfo = findViewById(R.id.textRegisterFormInfo);
         if (formIsValid) {
-            registerFormInfo.setText(email.getText().toString() + " " + password.getText().toString() + " " + confirmedPassword.getText().toString());
+            Toast toast = Toast.makeText(getBaseContext(), "User registered", Toast.LENGTH_SHORT);
+            toast.show();
+            return;
         }
     }
 }

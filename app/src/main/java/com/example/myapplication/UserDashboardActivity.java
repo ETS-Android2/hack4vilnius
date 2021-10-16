@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import androidx.activity.result.ActivityResult;
+
 import static android.graphics.Color.BLACK;
 import static android.graphics.Color.WHITE;
 
@@ -36,6 +37,7 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
 import java.util.Hashtable;
+import java.util.Map;
 
 import androidmads.library.qrgenearator.QRGEncoder;
 
@@ -43,6 +45,7 @@ public class UserDashboardActivity extends AppCompatActivity {
 
     private EditText dataEdt;
     private Button generateQrBtn;
+    private String username;
     Bitmap bitmap;
     QRGEncoder qrgEncoder;
 
@@ -51,7 +54,7 @@ public class UserDashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_dashboard);
 
-        String username = getIntent().getStringExtra("username");
+        username = getIntent().getStringExtra("username");
         TextView loginInfo = findViewById(R.id.welcomeText);
         loginInfo.setText("Sveiki " + username + "!");
     }
@@ -68,7 +71,7 @@ public class UserDashboardActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
-            if(resultCode == RESULT_OK) {
+            if (resultCode == RESULT_OK) {
                 String strEditText = data.getStringExtra("editTextValue");
                 TextView goalInfo = findViewById(R.id.textViewCurrentGoal);
                 goalInfo.setText(strEditText);
@@ -115,7 +118,7 @@ public class UserDashboardActivity extends AppCompatActivity {
         hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H); // H = 30% damage
 
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
-        String inputValue = "sdfdsfsdf fdsfdsds";
+        String inputValue = "username";
 
         int size = 256;
         BitMatrix bitMatrix = qrCodeWriter.encode(inputValue, BarcodeFormat.QR_CODE, size, size);
@@ -146,8 +149,32 @@ public class UserDashboardActivity extends AppCompatActivity {
             }
         });
     }
+
     public void onRedeemAwardsClick(View view) {
         // Stub
-        startActivity(new Intent(UserDashboardActivity.this, ScoreboardActivity.class));
+//        startActivity(new Intent(UserDashboardActivity.this, ScoreboardActivity.class));
+    }
+
+    public void onHomeButtonClick(View view) {
+        Intent intent = new Intent(UserDashboardActivity.this, UserDashboardActivity.class);
+        TextView userName = findViewById(R.id.welcomeText);
+        intent.putExtra("username", userName.getText().toString());
+        startActivity(intent);
+    }
+
+//    public void onCouponButtonClick (View view){
+//        Intent intent = new Intent(UserDashboardActivity.this, CouponsActivity.class);
+//        TextView userName = findViewById(R.id.welcomeText);
+//        intent.putExtra("username", userName.getText().toString());
+//        startActivity(intent);
+//    }
+    public void onMapButtonClick(View view) {
+        Intent intent = new Intent(UserDashboardActivity.this, MapActivity.class);
+        TextView userName = findViewById(R.id.welcomeText);
+        intent.putExtra("username", userName.getText().toString());
+        startActivity(intent);
+    }
+    public void onRatingButtonClick (View view){
+        startActivity(new Intent(UserDashboardActivity.this, UserDashboardActivity.class));
     }
 }

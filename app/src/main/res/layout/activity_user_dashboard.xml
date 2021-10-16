@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="onRatingButtonClick"
     tools:context=".UserDashboardActivity">
 
     <Button
@@ -113,6 +114,7 @@
             android:layout_height="50dp"
             android:adjustViewBounds="true"
             android:background="@null"
+            android:onClick="onHomeButtonClick"
             android:src="@drawable/ic_main_menu"
             app:iconGravity="textStart" />
 
@@ -127,6 +129,7 @@
             android:layout_height="50dp"
             android:adjustViewBounds="true"
             android:background="@null"
+            android:onClick="onCouponButtonClick"
             android:src="@drawable/ic_discounts_menu"
             app:iconGravity="textStart" />
 
@@ -141,6 +144,7 @@
             android:layout_height="50dp"
             android:adjustViewBounds="true"
             android:background="@null"
+            android:onClick="onMapButtonClick"
             android:src="@drawable/ic_map_menu"
             app:iconGravity="textStart" />
 
@@ -155,6 +159,7 @@
             android:layout_height="50dp"
             android:adjustViewBounds="true"
             android:background="@null"
+            android:onClick="onQRcodeOpen"
             android:src="@drawable/ic_qr_menu"
             app:iconGravity="textStart" />
 

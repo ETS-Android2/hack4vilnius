@@ -78,6 +78,7 @@
                 android:layout_height="50dp"
                 android:adjustViewBounds="true"
                 android:background="@null"
+                android:onClick="onQRcodeOpen"
                 android:src="@drawable/ic_qr_menu"
                 app:iconGravity="textStart" />
 
