@@ -1,10 +1,12 @@
 package com.example.myapplication;
 
+import androidx.activity.result.ActivityResult;
 import static android.graphics.Color.BLACK;
 import static android.graphics.Color.WHITE;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Point;
@@ -52,10 +54,11 @@ public class UserDashboardActivity extends AppCompatActivity {
     }
 
     public void goToMap(View view) {
-        EditText userName = findViewById(R.id.editTextUsername);
-        EditText password = findViewById(R.id.editTextPassword);
-
         startActivity(new Intent(UserDashboardActivity.this, MapActivity.class));
+    }
+
+    public void onSetGoalsClick(View view) {
+        startActivity(new Intent(UserDashboardActivity.this, GoalsActivity.class));
     }
 
     public void onQRcodeOpen(View view) throws WriterException {

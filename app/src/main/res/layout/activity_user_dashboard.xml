@@ -41,7 +41,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewCurrentGoal"
         android:layout_width="158dp"
         android:layout_height="38dp"
         android:layout_marginBottom="20dp"
@@ -54,10 +54,11 @@
         app:layout_constraintVertical_bias="0.957" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonSetGoals"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
+        android:onClick="onSetGoalsClick"
         android:text="Set goals"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.19"
@@ -74,7 +75,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.456"
         app:layout_constraintStart_toEndOf="@+id/buttonOnMapClick"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSetGoals"
         app:layout_constraintVertical_bias="0.689" />
 
     <Button
@@ -86,6 +87,6 @@
         android:text="Weekly deals"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.275"
-        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintStart_toEndOf="@+id/buttonSetGoals"
         app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
