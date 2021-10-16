@@ -3,7 +3,7 @@ from .models import HeapUser, Locations
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
-from .serializers import HeapUserSerializer, HeapUserSafeSerializer, LocationsSerializer
+from .serializers import HeapUserSerializer, HeapUserSafeSerializer, LocationsSerializer, HeapOrganisationSerializer
 
 # Create your views here.
 
@@ -18,6 +18,11 @@ class HeapUserViews(APIView):
     
     def get(self, request):
         return Response({"status":"Success"})
+
+
+class HeapOrganisationViews(APIView):
+    def post(self, request):
+        return None
     
 
 class GetUserInfo(APIView):
