@@ -161,8 +161,8 @@ public class UserDashboardActivity extends AppCompatActivity {
 
     public void onCouponButtonClick (View view){
         Intent intent = new Intent(UserDashboardActivity.this, PrizeActivity.class);
-        TextView userName = findViewById(R.id.welcomeText);
-        intent.putExtra("username", userName.getText().toString());
+        //TextView userName = findViewById(R.id.welcomeText);
+        intent.putExtra("username", username);
         startActivity(intent);
     }
     public void onMapButtonClick(View view) {
