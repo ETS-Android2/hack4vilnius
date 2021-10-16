@@ -1,9 +1,9 @@
 from django.http.response import HttpResponse
-from .models import HeapUser, Locations
+from .models import HeapUser, Locations, PointsAdditions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
-from .serializers import HeapUserSerializer, HeapUserSafeSerializer, LocationsSerializer, HeapOrganisationSerializer
+from .serializers import HeapUserSerializer, HeapUserSafeSerializer, LocationsSerializer, HeapOrganisationSerializer, PointsAdditionsSerializer
 
 # Create your views here.
 
@@ -22,8 +22,13 @@ class HeapUserViews(APIView):
 
 class HeapOrganisationViews(APIView):
     def post(self, request):
-        return None
-    
+        serializer = HeapOrganisationSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
+        else:
+            return Response({"status": "error", "errors": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
 
 class GetUserInfo(APIView):
     def get(self, request, id=None):
@@ -73,5 +78,16 @@ class LocationsView(APIView):
         return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
 
 
-        
-        
+class PointsAdditionsView(APIView):
+    def get(self, request, receiver_id=None):
+        if receiver_id:
+            try:
+                points = PointsAdditions.objects.filter(recipient=receiver_id)
+                serializer = PointsAdditionsSerializer(points, many=True)
+            except PointsAdditions.DoesNotExist:
+                return Response({"status": "error", "data": "recipient does not exist"}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            points_list = PointsAdditions.objects.all()
+            serializer = PointsAdditionsSerializer(points_list, many=True)
+
+        return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)

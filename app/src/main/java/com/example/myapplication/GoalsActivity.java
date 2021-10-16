@@ -26,11 +26,12 @@ public class GoalsActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getBaseContext(), parent.getItemAtPosition(position) + " selected", Toast.LENGTH_LONG).show();
-
-                Intent intent = new Intent(GoalsActivity.this, UserDashboardActivity.class);
-                intent.putExtra("goal", position);
-                startActivity(intent);
+                Intent intent = new Intent();
+                String selectedItem = listView.getItemAtPosition(position).toString();
+                intent.putExtra("editTextValue", selectedItem);
+                Toast.makeText(getBaseContext(), parent.getItemAtPosition(position) + "selected", Toast.LENGTH_LONG).show();
+                setResult(RESULT_OK, intent);
+                finish();
             }
         });
     }
