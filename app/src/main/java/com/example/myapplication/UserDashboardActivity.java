@@ -20,9 +20,6 @@ public class UserDashboardActivity extends AppCompatActivity {
     }
 
     public void goToMap(View view) {
-        EditText userName = findViewById(R.id.editTextUsername);
-        EditText password = findViewById(R.id.editTextPassword);
-
         startActivity(new Intent(UserDashboardActivity.this, MapActivity.class));
     }
 }
