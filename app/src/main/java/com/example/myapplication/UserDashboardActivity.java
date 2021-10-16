@@ -146,4 +146,8 @@ public class UserDashboardActivity extends AppCompatActivity {
             }
         });
     }
+    public void onRedeemAwardsClick(View view) {
+        // Stub
+        startActivity(new Intent(UserDashboardActivity.this, ScoreboardActivity.class));
+    }
 }
