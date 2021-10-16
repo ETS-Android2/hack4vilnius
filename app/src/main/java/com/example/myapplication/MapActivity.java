@@ -624,7 +624,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H); // H = 30% damage
 
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
-        String inputValue = "username";
+        String inputValue = username;
 
         int size = 256;
         BitMatrix bitMatrix = qrCodeWriter.encode(inputValue, BarcodeFormat.QR_CODE, size, size);
@@ -658,8 +658,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     public void onHomeButtonClick(View view) {
         Intent intent = new Intent(MapActivity.this, UserDashboardActivity.class);
-        TextView userName = findViewById(R.id.welcomeText);
-        intent.putExtra("username", userName.getText().toString());
+        intent.putExtra("username", username);
         startActivity(intent);
     }
 }
