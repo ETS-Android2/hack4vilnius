@@ -1,7 +1,9 @@
 package com.example.myapplication;
 
+import androidx.activity.result.ActivityResult;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,5 +23,9 @@ public class UserDashboardActivity extends AppCompatActivity {
 
     public void goToMap(View view) {
         startActivity(new Intent(UserDashboardActivity.this, MapActivity.class));
+    }
+
+    public void onSetGoalsClick(View view) {
+        startActivity(new Intent(UserDashboardActivity.this, GoalsActivity.class));
     }
 }
