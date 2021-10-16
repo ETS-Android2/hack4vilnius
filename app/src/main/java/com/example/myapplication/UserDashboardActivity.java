@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 public class UserDashboardActivity extends AppCompatActivity {
 
@@ -26,6 +29,18 @@ public class UserDashboardActivity extends AppCompatActivity {
     }
 
     public void onSetGoalsClick(View view) {
-        startActivity(new Intent(UserDashboardActivity.this, GoalsActivity.class));
+        Intent i = new Intent(this, GoalsActivity.class);
+        startActivityForResult(i, 1);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK) {
+                String strEditText = data.getStringExtra("editTextValue");
+                TextView goalInfo = findViewById(R.id.textViewCurrentGoal);
+                goalInfo.setText(strEditText);
+            }
+        }
     }
 }
