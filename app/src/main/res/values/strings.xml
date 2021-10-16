@@ -47,4 +47,6 @@
     <string name="_3500_points">3500 POINTS</string>
     <string name="_5000_points">5000 POINTS</string>
     <string name="todo">TODO</string>
+    <string name="set_a_goal">Set a goal</string>
+    <string name="go_ahead_set_your_goal">Go ahead. Set your goal!</string>
 </resources>

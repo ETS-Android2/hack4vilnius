@@ -23,7 +23,7 @@
         android:layout_height="38dp"
         android:layout_marginTop="100dp"
         android:layout_marginBottom="20dp"
-        android:text="Go ahead. Set your goal!"
+        android:text="@string/go_ahead_set_your_goal"
         app:layout_constraintBottom_toTopOf="@+id/progressBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -37,21 +37,11 @@
         android:layout_marginTop="25dp"
         android:layout_marginBottom="200dp"
         android:onClick="onSetGoalsClick"
-        android:text="Set a goal"
+        android:text="@string/set_a_goal"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progressBar" />
-
-    <Button
-        android:id="@+id/btnAwards"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:onClick="onRedeemAwardsClick"
-        android:text="Redeem Awards"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout4"
