@@ -36,6 +36,8 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -77,7 +79,7 @@ public class UserDashboardActivity extends AppCompatActivity {
         }
     }
 
-    public void onQRcodeOpen(View view) throws WriterException {
+    public void onQRcodeOpen(View view) throws WriterException, NoSuchAlgorithmException {
         // inflate the layout of the popup window
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.popup_window, null);
@@ -116,7 +118,10 @@ public class UserDashboardActivity extends AppCompatActivity {
         hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H); // H = 30% damage
 
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
-        String inputValue = "username";
+
+        MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+        messageDigest.update(username.getBytes());
+        String inputValue = new String(messageDigest.digest());
 
         int size = 256;
         BitMatrix bitMatrix = qrCodeWriter.encode(inputValue, BarcodeFormat.QR_CODE, size, size);
