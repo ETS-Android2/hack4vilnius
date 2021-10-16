@@ -19,10 +19,11 @@ class PointsList(models.Model):
     name = models.CharField(max_length=64)
     descriptions = models.CharField(max_length=255)
 
+
 class Locations(models.Model):
     name = models.CharField(max_length=64)
     latitude = models.FloatField()
-    longtitude = models.FloatField()
+    longitude = models.FloatField()
     location_address = models.CharField(max_length=255)
 
 class PointsAdditions(models.Model):
