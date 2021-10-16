@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from .models import HeapUser, PointsList
+from .models import HeapUser, PointsList, HeapOrganisation
 
 
-class HeapUSerSerializer(serializers.ModelSerializer):
+class HeapUserSerializer(serializers.ModelSerializer):
     user_email = serializers.CharField(max_length=255)
     user_password = serializers.CharField(max_length=255)
     user_ID = serializers.IntegerField(required=False)
@@ -10,6 +10,16 @@ class HeapUSerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = HeapUser
+        fields = ('__all__')
+
+
+class HeapOrganisationSerializer(serializers.ModelSerializer):
+    organisation_email = serializers.CharField(max_length=255)
+    organisation_password = serializers.CharField(max_length=255)
+    organisation_ID = serializers.IntegerField(required=False)
+
+    class Meta:
+        model = HeapOrganisation
         fields = ('__all__')
 
 

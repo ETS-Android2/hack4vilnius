@@ -8,6 +8,12 @@ class HeapUser(models.Model):
     user_points = models.IntegerField(default=0)
 
 
+class HeapOrganisation(models.Model):
+    organisation_email = models.CharField(max_length=255)
+    organisation_password = models.CharField(max_length=255)
+    organisation_ID = models.IntegerField(primary_key=True, unique=True)
+
+
 class PointsList(models.Model):
     points = models.IntegerField()
     name = models.CharField(max_length=64)
