@@ -17,6 +17,11 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true" >
         <activity
+            android:name=".ScoreboardActivity"
+            android:exported="false"
+            android:label="@string/title_activity_scoreboard"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
             android:name=".GoalsActivity"
             android:exported="false" />
 
