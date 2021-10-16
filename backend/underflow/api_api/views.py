@@ -28,10 +28,14 @@ class GetUserInfo(APIView):
             item = HeapUser.objects.get(user_ID=id)
             serializer = HeapUserSafeSerializer(item)
             return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
+        
+        return Response({"status": "error", "data": "missing id"}, status=status.HTTP_200_OK)
+
+        
+class GetUsersInfo(APIView):
+    def get(self, request, id=None):
         items = HeapUser.objects.all()
         serializer = HeapUserSafeSerializer(items, many=True)
         return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
-
         
-
         
