@@ -50,19 +50,19 @@ class GetUsersInfo(APIView):
 class LoginView(APIView):
     def post(self, request):
         details = HeapUserSerializer(data=request.data)
-        print(details.is_valid())
+        if not details.is_valid():
+            return Response({"status": "error", "data": "missing id"}, status=status.HTTP_400_BAD_REQUEST)
+
         email = details.validated_data['user_email']
         password = details.validated_data['user_password']
         try:
             item = HeapUser.objects.get(user_email=email)
         except HeapUser.DoesNotExist:
             return Response({"status": "error", "data": "user does not exist"}, status=status.HTTP_400_BAD_REQUEST)
-        print(item)
-        if item[0]['user_password'] != password:
+        if getattr(item, 'user_password') != password:
             return Response({"status": "error", "data": "Wrong password"}, status=status.HTTP_400_BAD_REQUEST)
         
-        serializer = HeapUserSafeSerializer(item.data)
-
+        serializer = HeapUserSafeSerializer(item)
         return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
 
 
