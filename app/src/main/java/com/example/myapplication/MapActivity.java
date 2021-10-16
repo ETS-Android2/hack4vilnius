@@ -203,7 +203,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 for (int i = 0; i < LocationJSONList.length(); i++) {
                     try {
                         JSONObject marker = LocationJSONList.getJSONObject(i);
-                        map.addMarker(new MarkerOptions().position(new LatLng(marker.getDouble("latitude"), marker.getDouble("longitude"))).title(marker.getString("location_address") + "\nValandinis mokestis: " + marker.getString("price_per_hour") + "€ \nSavininko numeris: " + marker.get("contact_info")));
+                        map.addMarker(new MarkerOptions().position(new LatLng(marker.getDouble("latitude"), marker.getDouble("longitude"))).title(marker.getString("name") + "\n" + marker.getString("location_address")));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -584,6 +584,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         }
         map.setMapStyle(style);
     }
+
     public void onQRcodeOpen(View view) throws WriterException {
         // inflate the layout of the popup window
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -653,5 +654,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 return true;
             }
         });
+    }
+
+    public void onHomeButtonClick(View view) {
+        Intent intent = new Intent(MapActivity.this, UserDashboardActivity.class);
+        TextView userName = findViewById(R.id.welcomeText);
+        intent.putExtra("username", userName.getText().toString());
+        startActivity(intent);
     }
 }

@@ -19,7 +19,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LocationService {
-    public static final String QUERY_FOR_LOCATION = "http://78.60.209.53:8080/api/v1/location/";
+    public static final String QUERY_FOR_LOCATION = "http://192.168.215.178:8000/heap/";
+
 
     Context context;
     ArrayList<String> Location_address_array = new ArrayList<String>();
@@ -39,14 +40,13 @@ public class LocationService {
     public void getJSONArryOfLocations(VolleyResponseListener volleyResponseListener, String status){
         String url =QUERY_FOR_LOCATION;
 
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url + "locations", null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 try {
                     JSONArray jArray = response;
                     if (jArray != null) {
                         for (int i=0;i<jArray.length();i++){
-                            if(jArray.getJSONObject(i).getString("reservation_status").equals(status))
                                 LocationJSONList.put(jArray.getJSONObject(i));
                         }
                     }
@@ -123,15 +123,10 @@ public class LocationService {
         MySingleton.getInstance(context).addToRequestQueue(request);
     }
 
-    public void reserveLocation(JSONObject location, String reservation_status){
+    public void postUser(JSONObject user){
         String url =QUERY_FOR_LOCATION;
-        try {
-            location.put("reservation_status", Boolean.parseBoolean(reservation_status));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(
-                Request.Method.POST, url, location,
+                Request.Method.POST, url + "login", user,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {

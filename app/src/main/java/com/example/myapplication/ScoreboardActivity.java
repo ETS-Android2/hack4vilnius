@@ -1,45 +1,27 @@
-//package com.example.myapplication;
-//
-//import android.os.Bundle;
-//
-//import com.google.android.material.floatingactionbutton.FloatingActionButton;
-//import com.google.android.material.snackbar.Snackbar;
-//import com.google.android.material.tabs.TabLayout;
-//
-//import androidx.viewpager.widget.ViewPager;
-//import androidx.appcompat.app.AppCompatActivity;
-//
-//import android.view.Menu;
-//import android.view.MenuItem;
-//import android.view.View;
-//
-//import com.example.myapplication.ui.main.SectionsPagerAdapter;
-//import com.example.myapplication.databinding.ActivityScoreboardBinding;
-//
-//public class ScoreboardActivity extends AppCompatActivity {
-//
-//    private ActivityScoreboardBinding binding;
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//
-//        binding = ActivityScoreboardBinding.inflate(getLayoutInflater());
-//        setContentView(binding.getRoot());
-//
-//        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
-//        ViewPager viewPager = binding.viewPager;
-//        viewPager.setAdapter(sectionsPagerAdapter);
-//        TabLayout tabs = binding.tabs;
-//        tabs.setupWithViewPager(viewPager);
-//        FloatingActionButton fab = binding.fab;
-//
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-//    }
-//}
+package com.example.myapplication;
+
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
+import com.example.myapplication.ui.main.SectionsPagerAdapter;
+import com.google.android.material.tabs.TabLayout;
+
+public class ScoreboardActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_scoreboard);
+
+        // Get the ViewPager and set it's PagerAdapter so that it can display items
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
+        viewPager.setAdapter(new SectionsPagerAdapter(getSupportFragmentManager(),
+                ScoreboardActivity.this));
+
+        // Give the TabLayout the ViewPager
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        tabLayout.setupWithViewPager(viewPager);
+    }
+
+}

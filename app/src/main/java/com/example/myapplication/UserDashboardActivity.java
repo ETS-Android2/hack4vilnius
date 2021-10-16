@@ -152,7 +152,7 @@ public class UserDashboardActivity extends AppCompatActivity {
 
     public void onRedeemAwardsClick(View view) {
         // Stub
-//        startActivity(new Intent(UserDashboardActivity.this, ScoreboardActivity.class));
+        startActivity(new Intent(UserDashboardActivity.this, ScoreboardActivity.class));
     }
 
     public void onHomeButtonClick(View view) {
@@ -162,7 +162,7 @@ public class UserDashboardActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-//    public void onCouponButtonClick (View view){
+    //    public void onCouponButtonClick (View view){
 //        Intent intent = new Intent(UserDashboardActivity.this, CouponsActivity.class);
 //        TextView userName = findViewById(R.id.welcomeText);
 //        intent.putExtra("username", userName.getText().toString());
@@ -174,7 +174,11 @@ public class UserDashboardActivity extends AppCompatActivity {
         intent.putExtra("username", userName.getText().toString());
         startActivity(intent);
     }
-    public void onRatingButtonClick (View view){
-        startActivity(new Intent(UserDashboardActivity.this, UserDashboardActivity.class));
+
+    public void onRatingButtonClick(View view) {
+        Intent intent = new Intent(UserDashboardActivity.this, ScoreboardActivity.class);
+        TextView userName = findViewById(R.id.welcomeText);
+        intent.putExtra("username", userName.getText().toString());
+        startActivity(intent);
     }
 }

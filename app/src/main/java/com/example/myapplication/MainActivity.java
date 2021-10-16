@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         EditText userName = findViewById(R.id.editTextUsername);
         EditText password = findViewById(R.id.editTextPassword);
 
+
         Context ctx = getApplicationContext();
 
         if (TextUtils.isEmpty(userName.getText().toString())) {

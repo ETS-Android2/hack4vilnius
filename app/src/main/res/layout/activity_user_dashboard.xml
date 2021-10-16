@@ -4,28 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:onClick="onRatingButtonClick"
     tools:context=".UserDashboardActivity">
-
-    <Button
-        android:id="@+id/buttonOnMapClick"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="goToMap"
-        android:text="Open Map"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.212"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.839" />
 
     <TextView
         android:id="@+id/welcomeText"
         android:layout_width="283dp"
         android:layout_height="46dp"
         android:layout_marginTop="40dp"
+        android:layout_marginBottom="113dp"
         android:text="Hello world"
+        app:layout_constraintBottom_toTopOf="@+id/textViewCurrentGoal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,11 +23,13 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="348dp"
         android:layout_height="105dp"
-        android:layout_marginBottom="364dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="52dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSetGoals"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCurrentGoal" />
 
     <TextView
         android:id="@+id/textViewCurrentGoal"
@@ -58,35 +48,26 @@
         android:id="@+id/buttonSetGoals"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginBottom="204dp"
         android:onClick="onSetGoalsClick"
         android:text="Set goals"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onQRcodeOpen"
-        android:text="Open QR code"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toEndOf="@+id/buttonOnMapClick"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSetGoals"
-        app:layout_constraintVertical_bias="0.608" />
-
-    <Button
         android:id="@+id/btnAwards"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="63dp"
+        android:layout_marginBottom="204dp"
         android:onClick="onRedeemAwardsClick"
         android:text="Redeem Awards"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.275"
         app:layout_constraintStart_toEndOf="@+id/buttonSetGoals"
@@ -96,12 +77,12 @@
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="40dp"
         android:gravity="center_horizontal|center_vertical"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonOnMapClick">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
 
         <Space
             android:layout_width="0dp"
@@ -114,7 +95,6 @@
             android:layout_height="50dp"
             android:adjustViewBounds="true"
             android:background="@null"
-            android:onClick="onHomeButtonClick"
             android:src="@drawable/ic_main_menu"
             app:iconGravity="textStart" />
 
@@ -174,6 +154,7 @@
             android:layout_height="50dp"
             android:adjustViewBounds="true"
             android:background="@null"
+            android:onClick="onRatingButtonClick"
             android:src="@drawable/ic_score_menu"
             app:iconGravity="textStart" />
 
@@ -192,8 +173,7 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+        app:layout_constraintStart_toStartOf="parent">
 
         <Space
             android:layout_width="0dp"
