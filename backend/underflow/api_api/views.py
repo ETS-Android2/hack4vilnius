@@ -57,8 +57,8 @@ class LoginView(APIView):
             item = HeapUser.objects.get(user_email=email)
         except HeapUser.DoesNotExist:
             return Response({"status": "error", "data": "user does not exist"}, status=status.HTTP_400_BAD_REQUEST)
-        
-        if item['user_password'] != password:
+        print(item)
+        if item[0]['user_password'] != password:
             return Response({"status": "error", "data": "Wrong password"}, status=status.HTTP_400_BAD_REQUEST)
         
         serializer = HeapUserSafeSerializer(item.data)

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import HeapUserViews, GetUserInfo, GetUsersInfo, LoginView
+from .views import HeapUserViews, GetUserInfo, GetUsersInfo, LocationsView, LoginView
 
 urlpatterns = [
     path('ooo', HeapUserViews.as_view()),
@@ -7,5 +7,6 @@ urlpatterns = [
     path('login', LoginView.as_view()),
     path('user/<int:id>', GetUserInfo.as_view()),
     path('allusers', GetUsersInfo.as_view()),
+    path('locations', LocationsView.as_view()),
 
 ]
