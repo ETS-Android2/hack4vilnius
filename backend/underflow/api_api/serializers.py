@@ -3,7 +3,7 @@ from .models import HeapUser, PointsList, HeapOrganisation
 
 
 class HeapUserSerializer(serializers.ModelSerializer):
-    user_email = serializers.CharField(max_length=255)
+    user_email = serializers.EmailField(max_length=255)
     user_password = serializers.CharField(max_length=255)
     user_ID = serializers.IntegerField(required=False)
     user_points = serializers.IntegerField(required=False)

@@ -18,3 +18,10 @@ class PointsList(models.Model):
     points = models.IntegerField()
     name = models.CharField(max_length=64)
     descriptions = models.CharField(max_length=255)
+
+
+class PointsAdditions(models.Model):
+    sender = models.ForeignKey(HeapOrganisation, on_delete=models.CASCADE)
+    recipient = models.ForeignKey(HeapUser, on_delete=models.CASCADE)
+    points = models.IntegerField()
+    date_sent = models.DateTimeField(auto_now=True)
