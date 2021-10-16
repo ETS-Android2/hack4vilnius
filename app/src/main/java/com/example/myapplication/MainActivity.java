@@ -41,4 +41,9 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("username", userName.getText().toString());
         startActivity(intent);
     }
+
+    public void onRegisterClick(View view) {
+        Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+        startActivity(intent);
+    }
 }
