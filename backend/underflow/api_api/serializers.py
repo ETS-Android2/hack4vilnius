@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import HeapUser, Locations, PointsList, HeapOrganisation, PointsAdditions
+from .models import Coupons, HeapUser, Locations, PointsList, HeapOrganisation, PointsAdditions
 
 
 class HeapUserSerializer(serializers.ModelSerializer):
@@ -64,4 +64,13 @@ class PointsAdditionsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PointsAdditions
+        fields = ('__all__')
+
+class CouponsSerializer(serializers.ModelSerializer):
+    name = serializers.CharField(max_length=64, required=True)
+    price = serializers.IntegerField(required=True)
+    description = serializers.CharField(max_length=255, required=True)
+
+    class Meta:
+        model = Coupons
         fields = ('__all__')

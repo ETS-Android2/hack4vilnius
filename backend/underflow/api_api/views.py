@@ -1,9 +1,9 @@
 from django.http.response import HttpResponse
-from .models import HeapOrganisation, HeapUser, Locations, PointsAdditions
+from .models import Coupons, HeapOrganisation, HeapUser, Locations, PointsAdditions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
-from .serializers import HeapUserSerializer, HeapUserSafeSerializer, LocationsSerializer, HeapOrganisationSerializer, PointsAdditionsSerializer
+from .serializers import CouponsSerializer, HeapUserSerializer, HeapUserSafeSerializer, LocationsSerializer, HeapOrganisationSerializer, PointsAdditionsSerializer
 
 # Create your views here.
 
@@ -81,7 +81,7 @@ class LocationsView(APIView):
     def get(self, request):
         locations = Locations.objects.all()
         serializer = LocationsSerializer(locations, many=True)
-        return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class PointsAdditionsView(APIView):
@@ -112,3 +112,9 @@ class PointsAdditionsView(APIView):
     #         return Response({"status": "success", "data": ss.data}, status=status.HTTP_200_OK)
     #     else:
     #         return Response({"status": "error", "errors": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
+class CouponsView(APIView):
+    def get(self, request):
+        coupons = Coupons.objects.all()
+        serializer = CouponsSerializer(coupons, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

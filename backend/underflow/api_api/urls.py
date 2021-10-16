@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import HeapOrganisationsView, HeapUserViews, GetUserInfo, GetUsersInfo, LocationsView, LoginView, PointsAdditionsView
+from .views import CouponsView, HeapOrganisationsView, HeapUserViews, GetUserInfo, GetUsersInfo, LocationsView, LoginView, PointsAdditionsView
 
 urlpatterns = [
     path('ooo', HeapUserViews.as_view()),
@@ -10,6 +10,7 @@ urlpatterns = [
     path('locations', LocationsView.as_view()),
     path('points', PointsAdditionsView.as_view()),
     path('points/<int:receiver_id>', PointsAdditionsView.as_view()),
-    path('organizations', HeapOrganisationsView.as_view())
+    path('organizations', HeapOrganisationsView.as_view()),
+    path('coupons', CouponsView.as_view()),
 
 ]

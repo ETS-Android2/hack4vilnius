@@ -32,3 +32,7 @@ class PointsAdditions(models.Model):
     points = models.IntegerField()
     date_sent = models.DateTimeField(auto_now=True)
 
+class Coupons(models.Model):
+    name = models.CharField(max_length=64)
+    price = models.IntegerField()
+    description = models.CharField(max_length=255)
