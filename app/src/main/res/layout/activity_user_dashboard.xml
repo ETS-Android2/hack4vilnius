@@ -154,6 +154,7 @@
             android:layout_height="50dp"
             android:adjustViewBounds="true"
             android:background="@null"
+            android:onClick="onRatingButtonClick"
             android:src="@drawable/ic_score_menu"
             app:iconGravity="textStart" />
 
