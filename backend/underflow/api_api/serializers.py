@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import HeapUser, PointsList, HeapOrganisation, PointsAdditions
+from .models import HeapUser, Locations, PointsList, HeapOrganisation, PointsAdditions
 
 
 class HeapUserSerializer(serializers.ModelSerializer):
@@ -49,12 +49,18 @@ class LocationsSerializer(serializers.ModelSerializer):
     longitude = serializers.FloatField(required=True)
     location_address = serializers.CharField(max_length=255, required=True)
 
+    class Meta:
+        model = Locations
+        fields = ('__all__')
+
 
 class PointsAdditionsSerializer(serializers.ModelSerializer):
-    sender = serializers.PrimaryKeyRelatedField(many=False, read_only=True)
+    sender = serializers.PrimaryKeyRelatedField(many=False, read_only=True) 
+    # sender = serializers.PrimaryKeyRelatedField(many=False, queryset=HeapOrganisation.objects.all()) 
+    # recipient = serializers.PrimaryKeyRelatedField(many=False, queryset=HeapUser.objects.all())
     recipient = serializers.PrimaryKeyRelatedField(many=False, read_only=True)
     points = serializers.IntegerField()
-    date_sent = serializers.DateTimeField()
+    date_sent = serializers.DateTimeField(required=False)
 
     class Meta:
         model = PointsAdditions
