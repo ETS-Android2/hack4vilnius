@@ -155,26 +155,10 @@ public class UserDashboardActivity extends AppCompatActivity {
 //        startActivity(new Intent(UserDashboardActivity.this, ScoreboardActivity.class));
     }
 
-    public void onHomeButtonClick(View view) {
-        Intent intent = new Intent(UserDashboardActivity.this, UserDashboardActivity.class);
-        TextView userName = findViewById(R.id.welcomeText);
-        intent.putExtra("username", userName.getText().toString());
-        startActivity(intent);
-    }
-
-//    public void onCouponButtonClick (View view){
-//        Intent intent = new Intent(UserDashboardActivity.this, CouponsActivity.class);
-//        TextView userName = findViewById(R.id.welcomeText);
-//        intent.putExtra("username", userName.getText().toString());
-//        startActivity(intent);
-//    }
     public void onMapButtonClick(View view) {
         Intent intent = new Intent(UserDashboardActivity.this, MapActivity.class);
         TextView userName = findViewById(R.id.welcomeText);
         intent.putExtra("username", userName.getText().toString());
         startActivity(intent);
-    }
-    public void onRatingButtonClick (View view){
-        startActivity(new Intent(UserDashboardActivity.this, UserDashboardActivity.class));
     }
 }
