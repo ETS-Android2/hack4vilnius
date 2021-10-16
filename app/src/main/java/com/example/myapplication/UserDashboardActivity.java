@@ -150,7 +150,7 @@ public class UserDashboardActivity extends AppCompatActivity {
 
     public void onRedeemAwardsClick(View view) {
         // Stub
-        startActivity(new Intent(UserDashboardActivity.this, ScoreboardActivity.class));
+//        startActivity(new Intent(UserDashboardActivity.this, ScoreboardActivity.class));
     }
 
     public void onHomeButtonClick(View view) {
@@ -171,9 +171,9 @@ public class UserDashboardActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void onRatingButtonClick(View view) {
-        Intent intent = new Intent(UserDashboardActivity.this, ScoreboardActivity.class);
-        intent.putExtra("username", username);
-        startActivity(intent);
-    }
+//    public void onRatingButtonClick(View view) {
+//        Intent intent = new Intent(UserDashboardActivity.this, ScoreboardActivity.class);
+//        intent.putExtra("username", username);
+//        startActivity(intent);
+//    }
 }

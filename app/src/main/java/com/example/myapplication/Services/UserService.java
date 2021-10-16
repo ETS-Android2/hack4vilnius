@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.UUID;
 
 public class UserService {
-    public static final String QUERY_FOR_RESERVATION = "http://192.168.215.178:8000/heap/login";
+    public static final String QUERY_FOR_RESERVATION = "http://78.60.209.53:8000/heap/login";
     Context context;
 
     public UserService(Context context) {

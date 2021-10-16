@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LocationService {
-    public static final String QUERY_FOR_LOCATION = "http://192.168.215.178:8000/heap/";
+    public static final String QUERY_FOR_LOCATION = "http://78.60.209.53:8000/heap/";
 
 
     Context context;
