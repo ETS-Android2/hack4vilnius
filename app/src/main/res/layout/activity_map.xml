@@ -116,14 +116,15 @@
 
             <TextView
                 android:id="@+id/Home"
-                android:layout_width="50dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="@null"
                 android:fontFamily="sans-serif-thin"
-                android:text="Home"
-                android:textSize="7dp"/>
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/home"
+                android:textSize="7dp" />
 
 
             <Space
@@ -134,15 +135,15 @@
 
             <TextView
                 android:id="@+id/Coupons"
-                android:layout_width="50dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="@null"
                 android:fontFamily="sans-serif-thin"
                 android:gravity="center_horizontal|center_vertical"
-                android:text="Coupons"
-                android:textSize="7dp"/>
+                android:text="@string/coupons"
+                android:textSize="7dp" />
 
             <Space
                 android:layout_width="0dp"
@@ -151,15 +152,15 @@
 
             <TextView
                 android:id="@+id/Map"
-                android:layout_width="50dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="@null"
                 android:fontFamily="sans-serif-thin"
                 android:gravity="center_horizontal|center_vertical"
-                android:text="Map"
-                android:textSize="7dp"/>
+                android:text="@string/map"
+                android:textSize="7dp" />
 
             <Space
                 android:layout_width="0dp"
@@ -168,14 +169,14 @@
 
             <TextView
                 android:id="@+id/Qr_Code"
-                android:layout_width="50dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="@null"
                 android:fontFamily="sans-serif-thin"
                 android:gravity="center_horizontal|center_vertical"
-                android:text="Qr_Code"
+                android:text="@string/qr_code"
                 android:textSize="7dp" />
 
             <Space
@@ -185,14 +186,14 @@
 
             <TextView
                 android:id="@+id/Rating"
-                android:layout_width="50dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="@null"
                 android:fontFamily="sans-serif-thin"
                 android:gravity="center_horizontal|center_vertical"
-                android:text="Rating"
+                android:text="@string/rating"
                 android:textSize="7dp" />
 
 

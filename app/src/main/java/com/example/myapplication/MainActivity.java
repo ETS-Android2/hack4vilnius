@@ -37,6 +37,14 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+//        Context ctx = getApplicationContext();
+
+        if(TextUtils.isEmpty(userName.getText().toString())) {
+            Toast toast = Toast.makeText(getBaseContext(), "Please enter your username!", Toast.LENGTH_SHORT);
+            toast.show();
+            return;
+        }
+
         Intent intent = new Intent(MainActivity.this, UserDashboardActivity.class);
         intent.putExtra("username", userName.getText().toString());
         startActivity(intent);
