@@ -624,7 +624,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H); // H = 30% damage
 
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
-        String inputValue = "username";
+        String inputValue = username;
 
         int size = 256;
         BitMatrix bitMatrix = qrCodeWriter.encode(inputValue, BarcodeFormat.QR_CODE, size, size);
