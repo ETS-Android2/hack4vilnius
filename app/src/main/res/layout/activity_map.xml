@@ -51,6 +51,7 @@
                 android:layout_height="50dp"
                 android:adjustViewBounds="true"
                 android:background="@null"
+                android:onClick="onCouponButtonClick"
                 android:src="@drawable/ic_discounts_menu"
                 app:iconGravity="textStart" />
 
@@ -94,6 +95,7 @@
                 android:layout_height="50dp"
                 android:adjustViewBounds="true"
                 android:background="@null"
+                android:onClick="onScoreButtonClick"
                 android:src="@drawable/ic_score_menu"
                 app:iconGravity="textStart" />
 

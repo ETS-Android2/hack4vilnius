@@ -661,4 +661,15 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         intent.putExtra("username", username);
         startActivity(intent);
     }
+    public void onCouponButtonClick(View view) {
+        Intent intent = new Intent(MapActivity.this, PrizeActivity.class);
+        intent.putExtra("username", username);
+        startActivity(intent);
+    }
+    public void onScoreButtonClick(View view) {
+        Intent intent = new Intent(MapActivity.this, ScoreboardActivity.class);
+        intent.putExtra("username", username);
+        startActivity(intent);
+    }
+
 }
