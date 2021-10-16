@@ -1,9 +1,9 @@
 from django.http.response import HttpResponse
-from .models import HeapUser, Locations
+from .models import HeapUser, Locations, PointsAdditions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
-from .serializers import HeapUserSerializer, HeapUserSafeSerializer, LocationsSerializer, HeapOrganisationSerializer
+from .serializers import HeapUserSerializer, HeapUserSafeSerializer, LocationsSerializer, HeapOrganisationSerializer, PointsAdditionsSerializer
 
 # Create your views here.
 
@@ -22,8 +22,13 @@ class HeapUserViews(APIView):
 
 class HeapOrganisationViews(APIView):
     def post(self, request):
-        return None
-    
+        serializer = HeapOrganisationSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
+        else:
+            return Response({"status": "error", "errors": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
 
 class GetUserInfo(APIView):
     def get(self, request, id=None):
@@ -50,19 +55,19 @@ class GetUsersInfo(APIView):
 class LoginView(APIView):
     def post(self, request):
         details = HeapUserSerializer(data=request.data)
-        print(details.is_valid())
+        if not details.is_valid():
+            return Response({"status": "error", "data": "missing id"}, status=status.HTTP_400_BAD_REQUEST)
+
         email = details.validated_data['user_email']
         password = details.validated_data['user_password']
         try:
             item = HeapUser.objects.get(user_email=email)
         except HeapUser.DoesNotExist:
             return Response({"status": "error", "data": "user does not exist"}, status=status.HTTP_400_BAD_REQUEST)
-        print(item)
-        if item[0]['user_password'] != password:
+        if getattr(item, 'user_password') != password:
             return Response({"status": "error", "data": "Wrong password"}, status=status.HTTP_400_BAD_REQUEST)
         
-        serializer = HeapUserSafeSerializer(item.data)
-
+        serializer = HeapUserSafeSerializer(item)
         return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
 
 
@@ -73,5 +78,16 @@ class LocationsView(APIView):
         return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
 
 
-        
-        
+class PointsAdditionsView(APIView):
+    def get(self, request, receiver_id=None):
+        if receiver_id:
+            try:
+                points = PointsAdditions.objects.filter(recipient=receiver_id)
+                serializer = PointsAdditionsSerializer(points, many=True)
+            except PointsAdditions.DoesNotExist:
+                return Response({"status": "error", "data": "recipient does not exist"}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            points_list = PointsAdditions.objects.all()
+            serializer = PointsAdditionsSerializer(points_list, many=True)
+
+        return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)

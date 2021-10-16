@@ -20,6 +20,11 @@
     <string name="menu_activity">menu</string>
     <string name="usd">$</string>
     <string name="your_personal_qr_code">Your personal QR code</string>
+    <string name="home">Home</string>
+    <string name="coupons">Coupons</string>
+    <string name="map">Map</string>
+    <string name="qr_code">QR Code</string>
+    <string name="rating">Rating</string>
     <string name="title_activity_scoreboard">ScoreboardActivity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>

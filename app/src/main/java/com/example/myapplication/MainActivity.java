@@ -27,14 +27,31 @@ public class MainActivity extends AppCompatActivity {
 
         Context ctx = getApplicationContext();
 
-        if(TextUtils.isEmpty(userName.getText().toString())) {
+        if (TextUtils.isEmpty(userName.getText().toString())) {
             Toast toast = Toast.makeText(ctx, "Please enter your username!", Toast.LENGTH_SHORT);
+            toast.show();
+            return;
+        } else if (TextUtils.isEmpty(password.getText().toString())) {
+            Toast toast = Toast.makeText(ctx, "Please enter your password!", Toast.LENGTH_SHORT);
+            toast.show();
+            return;
+        }
+
+//        Context ctx = getApplicationContext();
+
+        if(TextUtils.isEmpty(userName.getText().toString())) {
+            Toast toast = Toast.makeText(getBaseContext(), "Please enter your username!", Toast.LENGTH_SHORT);
             toast.show();
             return;
         }
 
         Intent intent = new Intent(MainActivity.this, UserDashboardActivity.class);
         intent.putExtra("username", userName.getText().toString());
+        startActivity(intent);
+    }
+
+    public void onRegisterClick(View view) {
+        Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
         startActivity(intent);
     }
 }

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import HeapUser, PointsList, HeapOrganisation
+from .models import HeapUser, PointsList, HeapOrganisation, PointsAdditions
 
 
 class HeapUserSerializer(serializers.ModelSerializer):
@@ -46,5 +46,16 @@ class HeapUserSafeSerializer(serializers.ModelSerializer):
 class LocationsSerializer(serializers.ModelSerializer):
     name = serializers.CharField(max_length=64, required=True)
     latitude = serializers.FloatField(required=True)
-    longtitude = serializers.FloatField(required=True)
+    longitude = serializers.FloatField(required=True)
     location_address = serializers.CharField(max_length=255, required=True)
+
+
+class PointsAdditionsSerializer(serializers.ModelSerializer):
+    sender = serializers.PrimaryKeyRelatedField(many=False, read_only=True)
+    recipient = serializers.PrimaryKeyRelatedField(many=False, read_only=True)
+    points = serializers.IntegerField()
+    date_sent = serializers.DateTimeField()
+
+    class Meta:
+        model = PointsAdditions
+        fields = ('__all__')
