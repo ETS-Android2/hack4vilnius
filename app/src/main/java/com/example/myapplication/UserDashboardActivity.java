@@ -90,9 +90,8 @@ public class UserDashboardActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(int points) {
-                currentBarProgress = points + 5;
-                progressBar.setProgress(currentBarProgress);
-                progressbarInfo.setText(currentBarProgress + "/" + progressBar.getMax());
+                progressBar.setProgress(points);
+                progressbarInfo.setText(points + "/" + progressBar.getMax());
 
             }
         }, username);
@@ -108,9 +107,14 @@ public class UserDashboardActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
-                String strEditText = data.getStringExtra("editTextValue");
+                String strEditText = data.getStringExtra("currentGoal");
+                String goalPoints = data.getStringExtra("goalPoints");
                 TextView goalInfo = findViewById(R.id.textViewCurrentGoal);
+                TextView progressBarInfo = findViewById(R.id.textViewProgressBarInfo);
+                ProgressBar progressBar = findViewById(R.id.progressBar);
+                int currentProgress = progressBar.getProgress();
                 goalInfo.setText(strEditText);
+                progressBarInfo.setText(currentProgress + "/" + goalPoints);
             }
         }
     }

@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class GoalsActivity extends AppCompatActivity {
     ListView listView;
     ArrayAdapter<String> adapter;
-    String[] goals = {"Movie ticket", "Coffee discount", "More stuff"};
+    String[] goals = {"Movie ticket", "A cup of coffee", "Pen"};
     private String username;
 
     @Override
@@ -29,36 +29,59 @@ public class GoalsActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent();
+                int points = 0;
                 String selectedItem = listView.getItemAtPosition(position).toString();
-                intent.putExtra("editTextValue", "Your current goal: " + selectedItem);
-                Toast.makeText(getBaseContext(), parent.getItemAtPosition(position) + "selected", Toast.LENGTH_LONG).show();
+
+                switch (selectedItem) {
+                    case "Movie ticket":
+                        points = 500;
+                        break;
+
+                    case "A cup of coffee":
+                        points = 200;
+                        break;
+                    case "Pen":
+                        points = 50;
+                        break;
+                    default:
+                        points = 100;
+                }
+
+                Intent intent = new Intent();
+                intent.putExtra("currentGoal", "Your current goal: " + selectedItem);
+                intent.putExtra("goalPoints", Integer.toString(points));
+                Toast toast = Toast.makeText(getBaseContext(), parent.getItemAtPosition(position) + " selected", Toast.LENGTH_LONG);
+                toast.show();
                 setResult(RESULT_OK, intent);
                 finish();
             }
         });
     }
+
     public void onHomeButtonClick(View view) {
         Intent intent = new Intent(GoalsActivity.this, UserDashboardActivity.class);
         intent.putExtra("username", username);
         startActivity(intent);
     }
 
-    public void onCouponButtonClick (View view){
+    public void onCouponButtonClick(View view) {
         Intent intent = new Intent(GoalsActivity.this, PrizeActivity.class);
         intent.putExtra("username", username);
         startActivity(intent);
     }
+
     public void onMapButtonClick(View view) {
         Intent intent = new Intent(GoalsActivity.this, MapActivity.class);
         intent.putExtra("username", username);
         startActivity(intent);
     }
+
     public void onQRCodeButtonClick(View view) {
         Intent intent = new Intent(GoalsActivity.this, QRCodeActivity.class);
         intent.putExtra("username", username);
         startActivity(intent);
     }
+
     public void onScoreButtonClick(View view) {
         Intent intent = new Intent(GoalsActivity.this, ScoreboardActivity.class);
         intent.putExtra("username", username);
