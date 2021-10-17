@@ -65,6 +65,7 @@ public class UserDashboardActivity extends AppCompatActivity {
         ProgressBar progressBar = findViewById(R.id.progressBar);
         TextView progressbarInfo = findViewById(R.id.textViewProgressBarInfo);
 
+        progressBar.setProgress(currentBarProgress);
         progressbarInfo.setText(currentBarProgress + "/" + progressBar.getMax());
     }
 
