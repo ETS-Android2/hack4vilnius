@@ -23,8 +23,8 @@
         android:id="@+id/imgText1"
         android:layout_width="97dp"
         android:layout_height="42dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="48dp"
         android:gravity="center"
         android:text="@string/discount_voucher_1"
         android:textSize="14sp"
@@ -35,97 +35,85 @@
         android:id="@+id/imgText2"
         android:layout_width="97dp"
         android:layout_height="42dp"
-        android:layout_marginTop="96dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="48dp"
         android:gravity="center"
         android:text="@string/discount_voucher_2"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgText1" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewCoupon20" />
 
     <TextView
         android:id="@+id/imgText3"
         android:layout_width="97dp"
         android:layout_height="42dp"
-        android:layout_marginTop="104dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="48dp"
         android:gravity="center"
         android:text="@string/discount_voucher_3"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgText2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewCoupon25" />
 
     <TextView
         android:id="@+id/imgText4"
         android:layout_width="97dp"
         android:layout_height="42dp"
-        android:layout_marginTop="108dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="48dp"
         android:gravity="center"
         android:text="@string/discount_voucher_4"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgText3" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewCoupon30" />
 
     <TextView
         android:id="@+id/couponNumber1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
+        android:layout_marginEnd="36dp"
         android:text="@string/_200_points"
         android:textColor="#17AA1D"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/imgText2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgText1"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/imgText1" />
 
     <TextView
         android:id="@+id/couponNumber2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
+        android:layout_marginEnd="36dp"
         android:text="@string/_250_points"
         android:textColor="#17AA1D"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/imgText3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgText2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/imgText2" />
 
     <TextView
         android:id="@+id/couponNumber3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
+        android:layout_marginEnd="36dp"
         android:text="@string/_300_points"
         android:textColor="#17AA1D"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/imgText4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgText3"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/imgText3" />
 
     <TextView
         android:id="@+id/couponNumber4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
+        android:layout_marginEnd="36dp"
         android:text="@string/_350_points"
         android:textColor="#17AA1D"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgText4"
-        app:layout_constraintVertical_bias="0.113" />
+        app:layout_constraintTop_toBottomOf="@+id/imgText4" />
 
     <ImageView
         android:id="@+id/imageViewCoupon25"
         android:layout_width="265dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="5dp"
+        android:layout_height="120dp"
         app:layout_constraintEnd_toStartOf="@+id/imgText2"
-        app:layout_constraintHorizontal_bias="0.755"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewCoupon20"
         app:srcCompat="@mipmap/ic_prize_img_coupon_25_foreground" />
@@ -133,21 +121,20 @@
     <ImageView
         android:id="@+id/imageViewCoupon30"
         android:layout_width="265dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="120dp"
         app:layout_constraintEnd_toStartOf="@+id/imgText3"
-        app:layout_constraintHorizontal_bias="0.755"
+        app:layout_constraintHorizontal_bias="0.111"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewCoupon25"
         app:srcCompat="@mipmap/ic_prize_img_coupon_30_foreground" />
 
+
     <ImageView
         android:id="@+id/imageViewCoupon35"
         android:layout_width="265dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="120dp"
         app:layout_constraintEnd_toStartOf="@+id/imgText4"
-        app:layout_constraintHorizontal_bias="0.326"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewCoupon30"
         app:srcCompat="@mipmap/ic_prize_img_coupon_35_foreground" />
@@ -155,14 +142,13 @@
     <ImageView
         android:id="@+id/imageViewCoupon20"
         android:layout_width="265dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="9dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toStartOf="@+id/imgText1"
-        app:layout_constraintHorizontal_bias="0.755"
+        app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:srcCompat="@mipmap/ic_prize_img_coupon_20v2_foreground" />
-
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -173,6 +159,7 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/couponNumber4">
 
@@ -263,6 +250,7 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
