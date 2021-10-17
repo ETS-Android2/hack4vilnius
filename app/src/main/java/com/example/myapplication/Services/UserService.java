@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UserService {
-    public static final String QUERY_FOR_USER_SERVICE = "http://78.60.209.53:8000/heap/";
+    public static final String QUERY_FOR_USER_SERVICE = "http://192.168.215.178:8000/heap/";
     Context context;
     JSONArray UserJSONList = new JSONArray();
 
