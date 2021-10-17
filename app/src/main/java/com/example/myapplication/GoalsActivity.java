@@ -34,14 +34,14 @@ public class GoalsActivity extends AppCompatActivity {
 
                 switch (selectedItem) {
                     case "Movie ticket":
-                        points = 500;
+                        points = 5000;
                         break;
 
                     case "A cup of coffee":
-                        points = 200;
+                        points = 2000;
                         break;
                     case "Pen":
-                        points = 50;
+                        points = 500;
                         break;
                     default:
                         points = 100;
