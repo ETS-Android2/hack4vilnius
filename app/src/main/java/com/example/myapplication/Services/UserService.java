@@ -21,6 +21,8 @@ public class UserService {
     public static final String QUERY_FOR_USER_SERVICE = "http://192.168.215.178:8000/heap/";
     Context context;
     JSONArray UserJSONList = new JSONArray();
+    int points = 0;
+
 
     public UserService(Context context) {
         this.context = context;
@@ -31,6 +33,7 @@ public class UserService {
 
         void onResponse(JSONObject user_object);
         void onResponse(JSONArray user_list);
+        void onResponse(int points);
     }
 
     public void Login(VolleyResponseListener volleyResponseListener, JSONObject user_object) {
@@ -101,6 +104,36 @@ public class UserService {
                         }
                     }
                     volleyResponseListener.onResponse(UserJSONList);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    volleyResponseListener.onError("Something wrong");
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e( "Error: Response", "" + error.getMessage());
+            }
+        });
+        MySingleton.getInstance(context).addToRequestQueue(request);
+    }
+
+    public void getOneUserScore(VolleyResponseListener volleyResponseListener, String username){
+        String url =QUERY_FOR_USER_SERVICE;
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url + "allusers", null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    JSONArray jArray = response;
+                    if (jArray != null) {
+                        for (int i=0;i<jArray.length();i++){
+                            JSONObject jsonObject = jArray.getJSONObject(i);
+                            if(jsonObject.getString("user_email").equals(username)) {
+                                points = jsonObject.getInt("user_points");
+                            }
+                        }
+                    }
+                    volleyResponseListener.onResponse(points);
                 } catch (JSONException e) {
                     e.printStackTrace();
                     volleyResponseListener.onError("Something wrong");

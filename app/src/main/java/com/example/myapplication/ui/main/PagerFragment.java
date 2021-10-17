@@ -73,6 +73,11 @@ public class PagerFragment extends Fragment {
                         new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, user_string_array);
                     ListView.setAdapter(arrayAdapter);
                 }
+
+                @Override
+                public void onResponse(int points) {
+
+                }
             });
         }
         return view;

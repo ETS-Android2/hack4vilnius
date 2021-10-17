@@ -89,6 +89,11 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onResponse(JSONArray user_list) {
 
                     }
+
+                    @Override
+                    public void onResponse(int points) {
+
+                    }
                 }, user_object);
             } catch (JSONException e) {
                 e.printStackTrace();
