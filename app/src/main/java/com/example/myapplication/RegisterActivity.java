@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.myapplication.Services.UserService;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -66,7 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
 
             try {
                 user_object.put("user_email", email.getText().toString());
-                user_object.put("user_password",password.getText().toString());
+                user_object.put("user_password", password.getText().toString());
 
                 UserService userService = new UserService(RegisterActivity.this);
                 userService.Registration(new UserService.VolleyResponseListener() {
@@ -82,6 +83,11 @@ public class RegisterActivity extends AppCompatActivity {
                         toast.show();
                         Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                         startActivity(intent);
+                    }
+
+                    @Override
+                    public void onResponse(JSONArray user_list) {
+
                     }
                 }, user_object);
             } catch (JSONException e) {
