@@ -51,8 +51,10 @@ public class UserDashboardActivity extends AppCompatActivity {
     private String username;
     Bitmap bitmap;
     QRGEncoder qrgEncoder;
-//TODO: progress bar set current progress
-//    private int currentBarProgress = 0;
+    ProgressBar progressBar = findViewById(R.id.progressBar);
+    TextView progressbarInfo = findViewById(R.id.textViewProgressBarInfo);
+    //TODO: progress bar set current progress
+    private int currentBarProgress = 0;
 //    private ProgressBar progressBar;
 
     @Override
@@ -63,6 +65,8 @@ public class UserDashboardActivity extends AppCompatActivity {
         username = getIntent().getStringExtra("username");
 //TODO; progress bar set current progress on button click that has elent listener
 //        progressBar = findViewById(R.id.progressBar);
+
+        progressbarInfo.setText(currentBarProgress + "/" + progressBar.getMax());
     }
 
     public void goToMap(View view) {
