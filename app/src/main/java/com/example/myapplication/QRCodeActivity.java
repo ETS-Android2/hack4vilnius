@@ -75,10 +75,10 @@ public class QRCodeActivity extends AppCompatActivity {
         MessageDigest messageDigest = null;
         try {
             messageDigest = MessageDigest.getInstance("SHA-256");
+            messageDigest.update(username.getBytes());
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        messageDigest.update(username.getBytes());
         String inputValue = new String(messageDigest.digest());
 
         int size = 256;

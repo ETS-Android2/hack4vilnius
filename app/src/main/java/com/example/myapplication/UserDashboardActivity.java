@@ -65,6 +65,7 @@ public class UserDashboardActivity extends AppCompatActivity {
 
     public void onSetGoalsClick(View view) {
         Intent i = new Intent(this, GoalsActivity.class);
+        i.putExtra("username", username);
         startActivityForResult(i, 1);
     }
 
