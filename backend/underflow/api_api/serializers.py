@@ -17,6 +17,7 @@ class HeapOrganisationSerializer(serializers.ModelSerializer):
     organisation_email = serializers.CharField(max_length=255)
     organisation_password = serializers.CharField(max_length=255)
     organisation_ID = serializers.IntegerField(required=False)
+    organisation_points = serializers.IntegerField(required=False)
 
     class Meta:
         model = HeapOrganisation

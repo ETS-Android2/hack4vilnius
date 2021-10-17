@@ -12,6 +12,7 @@ class HeapOrganisation(models.Model):
     organisation_email = models.CharField(max_length=255)
     organisation_password = models.CharField(max_length=255)
     organisation_ID = models.IntegerField(primary_key=True, unique=True)
+    organisation_points = models.IntegerField(default=0)
 
 
 class PointsList(models.Model):
@@ -26,11 +27,13 @@ class Locations(models.Model):
     longitude = models.FloatField()
     location_address = models.CharField(max_length=255)
 
+
 class PointsAdditions(models.Model):
     sender = models.ForeignKey(HeapOrganisation, on_delete=models.CASCADE)
     recipient = models.ForeignKey(HeapUser, on_delete=models.CASCADE)
     points = models.IntegerField()
     date_sent = models.DateTimeField(auto_now=True)
+
 
 class Coupons(models.Model):
     name = models.CharField(max_length=64)
