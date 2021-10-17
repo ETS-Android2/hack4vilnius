@@ -1,11 +1,3 @@
-# hack4vilnius
+Mobile Android application which allows users to collect points and redeem prizes for encouraged sustainable activity and daily life. The application is a prototype with two levels of users - ordinary people as users and businesses as users. Ordinary users have unique QR codes that can be scanned by business users who give sustainability points for actions which can be considered sustainable.
 
-QR code generation: https://www.geeksforgeeks.org/how-to-generate-qr-code-in-android/
-
-MongoDB and Python: https://www.mongodb.com/blog/post/getting-started-with-python-and-mongodb
-
-Mapbox API (zemelapiam vietoj google maps): https://docs.mapbox.com/android/maps/guides/
-
-QR code scanner implementation: 
-* https://learntodroid.com/how-to-create-a-qr-code-scanner-app-in-android/
-* https://stackoverflow.com/questions/8831050/android-how-to-read-qr-code-in-my-application
+The application was developed for Hack4Vilnius hackathon in October 2021.
