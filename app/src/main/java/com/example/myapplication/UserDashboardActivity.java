@@ -7,6 +7,7 @@ import static android.graphics.Color.WHITE;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -28,8 +29,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import com.example.myapplication.Services.UserService;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
@@ -51,26 +55,47 @@ public class UserDashboardActivity extends AppCompatActivity {
     private String username;
     Bitmap bitmap;
     QRGEncoder qrgEncoder;
+    int currentBarProgress = 0;
 
 
-
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_dashboard);
 
         username = getIntent().getStringExtra("username");
-
-        int currentBarProgress = 0;
         ProgressBar progressBar = findViewById(R.id.progressBar);
         TextView progressbarInfo = findViewById(R.id.textViewProgressBarInfo);
 
-        progressBar.setProgress(currentBarProgress);
         progressbarInfo.setText(currentBarProgress + "/" + progressBar.getMax());
-    }
 
-    public void goToMap(View view) {
-        startActivity(new Intent(UserDashboardActivity.this, MapActivity.class));
+        UserService userService = new UserService(UserDashboardActivity.this);
+        userService.getOneUserScore(new UserService.VolleyResponseListener() {
+            @Override
+            public void onError(String message) {
+                Toast toast = Toast.makeText(getBaseContext(), "Failed to load user score", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+
+            @Override
+            public void onResponse(JSONObject user_object) {
+
+            }
+
+            @Override
+            public void onResponse(JSONArray user_list) {
+
+            }
+
+            @Override
+            public void onResponse(int points) {
+                currentBarProgress = points + 5;
+                progressBar.setProgress(currentBarProgress);
+                progressbarInfo.setText(currentBarProgress + "/" + progressBar.getMax());
+
+            }
+        }, username);
     }
 
     public void onSetGoalsClick(View view) {
@@ -170,12 +195,13 @@ public class UserDashboardActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void onCouponButtonClick (View view){
+    public void onCouponButtonClick(View view) {
         Intent intent = new Intent(UserDashboardActivity.this, PrizeActivity.class);
         //TextView userName = findViewById(R.id.welcomeText);
         intent.putExtra("username", username);
         startActivity(intent);
     }
+
     public void onMapButtonClick(View view) {
         Intent intent = new Intent(UserDashboardActivity.this, MapActivity.class);
         intent.putExtra("username", username);
