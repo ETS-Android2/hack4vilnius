@@ -77,6 +77,25 @@ class LoginView(APIView):
         return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
 
 
+class OrganisationLoginView(APIView):
+    def post(self, request):
+        details = HeapOrganisationSerializer(data=request.data)
+        if not details.is_valid():
+            return Response({"status": "error", "data": "missing id"}, status=status.HTTP_400_BAD_REQUEST)
+
+        email = details.validated_data['organisation_email']
+        password = details.validated_data['organisation_password']
+        try:
+            item = HeapOrganisation.objects.get(organisation_email=email)
+        except HeapOrganisation.DoesNotExist:
+            return Response({"status": "error", "data": "user does not exist"}, status=status.HTTP_400_BAD_REQUEST)
+        if item.organisation_password != password:
+            return Response({"status": "error", "data": "Wrong password"}, status=status.HTTP_400_BAD_REQUEST)
+        
+        serializer = HeapOrganisationSerializer(item)
+        return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
+
+
 class LocationsView(APIView):
     def get(self, request):
         locations = Locations.objects.all()
