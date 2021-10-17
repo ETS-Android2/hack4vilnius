@@ -16,7 +16,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
+        android:background="@drawable/custom_button"
+        android:textColor="@color/white"
+        />
 
     <EditText
         android:id="@+id/editTextUsername"
@@ -55,7 +58,9 @@
         android:text="Register Here"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSignIn" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonSignIn"
+        android:background="@null"
+        android:textColor="@color/colorPrimary"/>
 
     <ImageView
         android:id="@+id/imageView"
