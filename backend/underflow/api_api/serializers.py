@@ -42,6 +42,15 @@ class HeapUserSafeSerializer(serializers.ModelSerializer):
     class Meta:
         model = HeapUser
         fields = ['user_email', 'user_ID', 'user_points']
+
+
+class PointsAddSerializer(serializers.ModelSerializer):
+    user_email = serializers.CharField(max_length=255, required=True)
+    user_points = serializers.IntegerField(required=True)
+
+    class Meta:
+        model = HeapUser
+        fields = ['user_email', 'user_points']
     
 
 class LocationsSerializer(serializers.ModelSerializer):

@@ -2,8 +2,8 @@ from django.http.response import HttpResponse
 from .models import Coupons, HeapOrganisation, HeapUser, Locations, PointsAdditions
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework import status
-from .serializers import CouponsSerializer, HeapUserSerializer, HeapUserSafeSerializer, LocationsSerializer, HeapOrganisationSerializer, PointsAdditionsSerializer
+from rest_framework import serializers, status
+from .serializers import CouponsSerializer, HeapUserSerializer, HeapUserSafeSerializer, LocationsSerializer, HeapOrganisationSerializer, PointsAddSerializer, PointsAdditionsSerializer
 
 # Create your views here.
 
@@ -137,3 +137,22 @@ class CouponsView(APIView):
         coupons = Coupons.objects.all()
         serializer = CouponsSerializer(coupons, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class AddPointsView(APIView):
+    def post(self, request):
+        details = PointsAddSerializer(data=request.data)
+        if not details.is_valid():
+            return Response({"status": "error", "data": details.errors}, status=status.HTTP_400_BAD_REQUEST)
+        email = details.validated_data['user_email']
+        points = details.validated_data['user_points']
+        try:
+            item = HeapUser.objects.get(user_email=email)
+        except HeapUser.DoesNotExist:
+            return Response({"status": "error", "data": "user does not exist"}, status=status.HTTP_400_BAD_REQUEST)
+        item.user_points += points
+        item.save()
+
+        return Response({"status": "success"}, status=status.HTTP_200_OK)
+        
+        
