@@ -62,8 +62,8 @@ public class PagerFragment extends Fragment {
                     if (user_list != null) {
                         for (int i = 0; i < user_list.length(); i++) {
                             try {
-                                user_string_array.add("      " + user_list.getJSONObject(i).getString("user_email").split("@")[0] +
-                                        " score " + user_list.getJSONObject(i).getString("user_points"));
+                                user_string_array.add("        " + user_list.getJSONObject(i).getString("user_email").split("@")[0] +
+                                        "        score: " + user_list.getJSONObject(i).getString("user_points"));
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
