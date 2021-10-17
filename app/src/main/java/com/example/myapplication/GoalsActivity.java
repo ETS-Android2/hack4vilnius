@@ -14,11 +14,14 @@ public class GoalsActivity extends AppCompatActivity {
     ListView listView;
     ArrayAdapter<String> adapter;
     String[] goals = {"Movie ticket", "Coffee discount", "More stuff"};
+    private String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goals);
+
+        username = getIntent().getStringExtra("username");
 
         listView = (ListView) findViewById(R.id.listViewGoalsList);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, goals);
@@ -28,12 +31,38 @@ public class GoalsActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent();
                 String selectedItem = listView.getItemAtPosition(position).toString();
-                intent.putExtra("editTextValue", selectedItem);
+                intent.putExtra("editTextValue", "Your current goal: " + selectedItem);
                 Toast.makeText(getBaseContext(), parent.getItemAtPosition(position) + "selected", Toast.LENGTH_LONG).show();
                 setResult(RESULT_OK, intent);
                 finish();
             }
         });
+    }
+    public void onHomeButtonClick(View view) {
+        Intent intent = new Intent(GoalsActivity.this, UserDashboardActivity.class);
+        intent.putExtra("username", username);
+        startActivity(intent);
+    }
+
+    public void onCouponButtonClick (View view){
+        Intent intent = new Intent(GoalsActivity.this, PrizeActivity.class);
+        intent.putExtra("username", username);
+        startActivity(intent);
+    }
+    public void onMapButtonClick(View view) {
+        Intent intent = new Intent(GoalsActivity.this, MapActivity.class);
+        intent.putExtra("username", username);
+        startActivity(intent);
+    }
+    public void onQRCodeButtonClick(View view) {
+        Intent intent = new Intent(GoalsActivity.this, QRCodeActivity.class);
+        intent.putExtra("username", username);
+        startActivity(intent);
+    }
+    public void onScoreButtonClick(View view) {
+        Intent intent = new Intent(GoalsActivity.this, ScoreboardActivity.class);
+        intent.putExtra("username", username);
+        startActivity(intent);
     }
 
 

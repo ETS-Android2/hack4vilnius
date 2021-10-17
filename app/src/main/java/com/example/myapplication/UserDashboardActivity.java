@@ -24,6 +24,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,8 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -49,14 +52,21 @@ public class UserDashboardActivity extends AppCompatActivity {
     Bitmap bitmap;
     QRGEncoder qrgEncoder;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_dashboard);
 
         username = getIntent().getStringExtra("username");
-        TextView loginInfo = findViewById(R.id.welcomeText);
-        loginInfo.setText("Sveiki " + username + "!");
+
+        int currentBarProgress = 0;
+        ProgressBar progressBar = findViewById(R.id.progressBar);
+        TextView progressbarInfo = findViewById(R.id.textViewProgressBarInfo);
+
+        progressBar.setProgress(currentBarProgress);
+        progressbarInfo.setText(currentBarProgress + "/" + progressBar.getMax());
     }
 
     public void goToMap(View view) {
@@ -65,6 +75,7 @@ public class UserDashboardActivity extends AppCompatActivity {
 
     public void onSetGoalsClick(View view) {
         Intent i = new Intent(this, GoalsActivity.class);
+        i.putExtra("username", username);
         startActivityForResult(i, 1);
     }
 
@@ -79,7 +90,7 @@ public class UserDashboardActivity extends AppCompatActivity {
         }
     }
 
-    public void onQRcodeOpen(View view) throws WriterException {
+    public void onQRcodeOpen(View view) throws WriterException, NoSuchAlgorithmException {
         // inflate the layout of the popup window
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.popup_window, null);
@@ -118,7 +129,10 @@ public class UserDashboardActivity extends AppCompatActivity {
         hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H); // H = 30% damage
 
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
-        String inputValue = "username";
+
+        MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+        messageDigest.update(username.getBytes());
+        String inputValue = new String(messageDigest.digest());
 
         int size = 256;
         BitMatrix bitMatrix = qrCodeWriter.encode(inputValue, BarcodeFormat.QR_CODE, size, size);
@@ -150,35 +164,27 @@ public class UserDashboardActivity extends AppCompatActivity {
         });
     }
 
-    public void onRedeemAwardsClick(View view) {
-        // Stub
-        startActivity(new Intent(UserDashboardActivity.this, ScoreboardActivity.class));
-    }
-
     public void onHomeButtonClick(View view) {
         Intent intent = new Intent(UserDashboardActivity.this, UserDashboardActivity.class);
-        TextView userName = findViewById(R.id.welcomeText);
-        intent.putExtra("username", userName.getText().toString());
+        intent.putExtra("username", username);
         startActivity(intent);
     }
 
-    //    public void onCouponButtonClick (View view){
-//        Intent intent = new Intent(UserDashboardActivity.this, CouponsActivity.class);
-//        TextView userName = findViewById(R.id.welcomeText);
-//        intent.putExtra("username", userName.getText().toString());
-//        startActivity(intent);
-//    }
+    public void onCouponButtonClick (View view){
+        Intent intent = new Intent(UserDashboardActivity.this, PrizeActivity.class);
+        //TextView userName = findViewById(R.id.welcomeText);
+        intent.putExtra("username", username);
+        startActivity(intent);
+    }
     public void onMapButtonClick(View view) {
         Intent intent = new Intent(UserDashboardActivity.this, MapActivity.class);
-        TextView userName = findViewById(R.id.welcomeText);
-        intent.putExtra("username", userName.getText().toString());
+        intent.putExtra("username", username);
         startActivity(intent);
     }
 
     public void onRatingButtonClick(View view) {
         Intent intent = new Intent(UserDashboardActivity.this, ScoreboardActivity.class);
-        TextView userName = findViewById(R.id.welcomeText);
-        intent.putExtra("username", userName.getText().toString());
+        intent.putExtra("username", username);
         startActivity(intent);
     }
 }

@@ -6,26 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".UserDashboardActivity">
 
-    <TextView
-        android:id="@+id/welcomeText"
-        android:layout_width="283dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="113dp"
-        android:text="Hello world"
-        app:layout_constraintBottom_toTopOf="@+id/textViewCurrentGoal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="348dp"
-        android:layout_height="105dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="52dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonSetGoals"
+        android:layout_marginEnd="50dp"
+        android:progress="0"
+        android:progressDrawable="@drawable/custom_progress_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,42 +25,26 @@
         android:id="@+id/textViewCurrentGoal"
         android:layout_width="158dp"
         android:layout_height="38dp"
+        android:layout_marginTop="100dp"
         android:layout_marginBottom="20dp"
-        android:text="Your target goals"
+        android:text="@string/go_ahead_set_your_goal"
         app:layout_constraintBottom_toTopOf="@+id/progressBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeText"
-        app:layout_constraintVertical_bias="0.957" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonSetGoals"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="42dp"
-        android:layout_marginBottom="204dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="200dp"
         android:onClick="onSetGoalsClick"
-        android:text="Set goals"
+        android:text="@string/set_a_goal"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
-
-    <Button
-        android:id="@+id/btnAwards"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="63dp"
-        android:layout_marginBottom="204dp"
-        android:onClick="onRedeemAwardsClick"
-        android:text="Redeem Awards"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.275"
-        app:layout_constraintStart_toEndOf="@+id/buttonSetGoals"
         app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 
     <LinearLayout
@@ -271,4 +245,14 @@
 
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewProgressBarInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.184"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

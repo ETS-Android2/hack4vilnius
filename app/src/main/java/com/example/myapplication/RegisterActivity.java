@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -9,10 +10,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.Services.UserService;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import javax.xml.validation.Validator;
 
 public class RegisterActivity extends AppCompatActivity {
     boolean formIsValid = false;
+    JSONObject user_object = new JSONObject();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +64,35 @@ public class RegisterActivity extends AppCompatActivity {
         validateFormFields(email.getText().toString(), password.getText().toString(), confirmedPassword.getText().toString());
 
         if (formIsValid) {
-            Toast toast = Toast.makeText(getBaseContext(), "User registered", Toast.LENGTH_SHORT);
-            toast.show();
-            return;
+
+            try {
+                user_object.put("user_email", email.getText().toString());
+                user_object.put("user_password", password.getText().toString());
+
+                UserService userService = new UserService(RegisterActivity.this);
+                userService.Registration(new UserService.VolleyResponseListener() {
+                    @Override
+                    public void onError(String message) {
+                        Toast toast = Toast.makeText(getBaseContext(), "User already exist", Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+
+                    @Override
+                    public void onResponse(JSONObject user_object) {
+                        Toast toast = Toast.makeText(getBaseContext(), "User registered", Toast.LENGTH_SHORT);
+                        toast.show();
+                        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onResponse(JSONArray user_list) {
+
+                    }
+                }, user_object);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
