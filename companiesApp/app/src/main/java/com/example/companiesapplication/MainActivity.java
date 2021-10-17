@@ -12,6 +12,8 @@ import com.budiyev.android.codescanner.CodeScannerView;
 import com.budiyev.android.codescanner.DecodeCallback;
 import com.google.zxing.Result;
 
+import org.json.JSONObject;
+
 
 public class MainActivity extends AppCompatActivity {
     private CodeScanner mCodeScanner;
@@ -27,7 +29,18 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(MainActivity.this, result.getText(), Toast.LENGTH_SHORT).show();
+                        OrganizationService organizationService = new OrganizationService(MainActivity.this);
+                        organizationService.AddPoints(new OrganizationService.VolleyResponseListener() {
+                            @Override
+                            public void onError(String message) {
+                                Toast.makeText(MainActivity.this, "Failed to add", Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onResponse(JSONObject organization_object) {
+                                Toast.makeText(MainActivity.this, "Successfully added 50 points to user: " + result.getText(), Toast.LENGTH_SHORT).show();
+                            }
+                        }, result.getText());
                     }
                 });
             }

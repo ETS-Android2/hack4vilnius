@@ -72,14 +72,17 @@ public class QRCodeActivity extends AppCompatActivity {
 
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
 
-        MessageDigest messageDigest = null;
-        try {
-            messageDigest = MessageDigest.getInstance("SHA-256");
-            messageDigest.update(username.getBytes());
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        String inputValue = new String(messageDigest.digest());
+//        MessageDigest messageDigest = null;
+//        try {
+//            messageDigest = MessageDigest.getInstance("SHA-256");
+//            messageDigest.update(username.getBytes());
+//        } catch (NoSuchAlgorithmException e) {
+//            e.printStackTrace();
+//        }
+//        String inputValue = new String(messageDigest.digest());
+
+
+        String inputValue = username;
 
         int size = 256;
         BitMatrix bitMatrix = null;

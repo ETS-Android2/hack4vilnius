@@ -159,9 +159,12 @@ public class UserDashboardActivity extends AppCompatActivity {
 
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
 
-        MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
-        messageDigest.update(username.getBytes());
-        String inputValue = new String(messageDigest.digest());
+//        MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+//        messageDigest.update(username.getBytes());
+//        String inputValue = new String(messageDigest.digest());
+
+        String inputValue = username;
+
 
         int size = 256;
         BitMatrix bitMatrix = qrCodeWriter.encode(inputValue, BarcodeFormat.QR_CODE, size, size);
