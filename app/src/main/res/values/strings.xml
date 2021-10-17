@@ -42,10 +42,10 @@
     <string name="discount_voucher_2">Discount Voucher 2</string>
     <string name="discount_voucher_1">Discount Voucher 1</string>
     <string name="discount_voucher_4">Discount Voucher 4</string>
-    <string name="_500_points">500 POINTS</string>
-    <string name="_2000_points">2000 POINTS</string>
-    <string name="_3500_points">3500 POINTS</string>
-    <string name="_5000_points">5000 POINTS</string>
+    <string name="_200_points">200 POINTS</string>
+    <string name="_250_points">250 POINTS</string>
+    <string name="_300_points">300 POINTS</string>
+    <string name="_350_points">350 POINTS</string>
     <string name="todo">TODO</string>
     <string name="set_a_goal">Set a goal</string>
     <string name="go_ahead_set_your_goal">Go ahead. Set your goal!</string>
