@@ -51,11 +51,8 @@ public class UserDashboardActivity extends AppCompatActivity {
     private String username;
     Bitmap bitmap;
     QRGEncoder qrgEncoder;
-    ProgressBar progressBar = findViewById(R.id.progressBar);
-    TextView progressbarInfo = findViewById(R.id.textViewProgressBarInfo);
-    //TODO: progress bar set current progress
-    private int currentBarProgress = 0;
-//    private ProgressBar progressBar;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +60,10 @@ public class UserDashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_dashboard);
 
         username = getIntent().getStringExtra("username");
-//TODO; progress bar set current progress on button click that has elent listener
-//        progressBar = findViewById(R.id.progressBar);
+
+        int currentBarProgress = 0;
+        ProgressBar progressBar = findViewById(R.id.progressBar);
+        TextView progressbarInfo = findViewById(R.id.textViewProgressBarInfo);
 
         progressbarInfo.setText(currentBarProgress + "/" + progressBar.getMax());
     }
