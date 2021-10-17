@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -33,18 +34,19 @@ public class MainActivity extends AppCompatActivity {
                         organizationService.AddPoints(new OrganizationService.VolleyResponseListener() {
                             @Override
                             public void onError(String message) {
-                                Toast.makeText(MainActivity.this, "Failed to add", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Failed to add " + result.getText(), Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
                             public void onResponse(JSONObject organization_object) {
                                 Toast.makeText(MainActivity.this, "Successfully added 50 points to user: " + result.getText(), Toast.LENGTH_SHORT).show();
                             }
-                        }, result.getText());
+                        }, result.toString());
                     }
                 });
             }
         });
+
         scannerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

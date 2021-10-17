@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class OrganizationService {
-    public static final String QUERY_FOR_USER_SERVICE = "http://192.168.215.178:8000/heap/";
+    public static final String QUERY_FOR_USER_SERVICE = "http://192.168.215.178:8000/heap/points/add";
     Context context;
     JSONObject AddPoint = new JSONObject();
 
@@ -42,7 +42,7 @@ public class OrganizationService {
             e.printStackTrace();
         }
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(
-                Request.Method.POST, url + "points/add", AddPoint,
+                Request.Method.POST, url, AddPoint,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -52,7 +52,7 @@ public class OrganizationService {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                volleyResponseListener.onError(error.getMessage());
+                volleyResponseListener.onError("Failed");
             }
         }) {
             @Override
